@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
 
-# Add defines the function and a, b expected to return a float
+# This module 'Add' defines the function and a, b expected to return a float
 def add(a: float, b: float) -> float:
     return a + b
