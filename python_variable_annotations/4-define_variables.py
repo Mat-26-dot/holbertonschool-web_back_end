@@ -9,7 +9,7 @@ This module defines some example variables with type annotations:
 """
 
 
-int = 1
+a: int = 1
 float = 3.14
 boolean = True
 string = "Holberton"
