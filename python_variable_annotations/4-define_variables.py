@@ -9,7 +9,7 @@ This module defines some example variables with type annotations:
 """
 
 
-a = 1
-pi = 3.14
-i_understand_annotations = True
-school = "Holberton"
+int = 1
+float = 3.14
+boolean = True
+string = "Holberton"
