@@ -12,6 +12,7 @@ import math
 
 
 def floor(n: float) -> int:
+    """Calling the function"""
     result = math.floor(n)
     """Returns the result math.floor that returns an int"""
     return result
