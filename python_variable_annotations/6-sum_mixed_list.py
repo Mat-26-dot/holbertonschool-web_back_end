@@ -10,6 +10,7 @@ from typing import List, Union
 
 
 def sum_mixed_list(mxd_lst: List[Union[int, float]]) -> float:
+    """Called the function by using result as a variable"""
     result = mxd_lst
     """Returns:
         float: The total sum of all numbers in the list,
