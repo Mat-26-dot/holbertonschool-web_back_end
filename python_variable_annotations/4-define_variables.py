@@ -10,6 +10,6 @@ This module defines some example variables with type annotations:
 
 
 a: int = 1
-float = 3.14
-boolean = True
-string = "Holberton"
+pi: float = 3.14
+i_understand_annotations: bool = True
+school: str = "Holberton"
