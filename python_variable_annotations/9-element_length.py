@@ -10,9 +10,8 @@ from typing import List, Tuple, Iterable, Sequence
         lst (Iterable[Sequence]): An iterable of sequence-like objects
         (e.g., strings, lists, tuples) where each element supports len()."""
 
+
 def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
-
-
     """Returns:
         List[Tuple[Sequence, int]]: A list of tuples where each tuple contains
         the original element and an integer representing its length."""
