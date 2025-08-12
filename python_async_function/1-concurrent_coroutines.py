@@ -4,7 +4,7 @@ from basic_async_syntax import wait_random
 
 import asyncio
 
-async def wait_n(n, max_delay) -> int:
+async def wait_n(n: int, max_delay) -> int:
     
     #Step 1
     empty_list = []
