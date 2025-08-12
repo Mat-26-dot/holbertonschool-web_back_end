@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
 from basic_async_syntax import wait_random
-
+from typing import List
 import asyncio
 
-async def wait_n(n: int, max_delay: float) -> int:
+
+async def wait_n(n: int, max_delay: int) -> List[float]:
     
     #Step 1
     empty_list = []
