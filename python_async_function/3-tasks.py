@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-
+"""This module creates and returns a asyncio Task that
+runs wait_random with the given max_delay."""
 from basic_async_syntax import wait_random
 
 import asyncio
