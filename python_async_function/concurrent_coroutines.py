@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""Module for running multiple asynchronous wait_random calls.
-This module contains the async routine wait_n which calls wait_random
-n times concurrently with the given maximum delay, and gathers
-the delays in ascending order without explicitly sorting them."""
+"""Module for running multiple asynchronous wait_random calls"""
 
 
 from basic_async_syntax import wait_random
@@ -13,10 +10,7 @@ import asyncio
 async def wait_n(n: int, max_delay: int) -> List[float]:
     """
     Spawn wait_random n times with the given max_delay and return
-    the list of all the delays in ascending order without using sort().
-
-    The ascending order is achieved by using asyncio.as_completed(),
-    which yields results as soon as each task is completed."""
+    the list of all the delays in ascending order without using sort()."""
 
     empty_list = []
 
