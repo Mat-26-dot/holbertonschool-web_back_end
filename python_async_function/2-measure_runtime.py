@@ -5,6 +5,7 @@ from concurrent_coroutines import wait_n
 import time
 import asyncio
 
+
 def measure_time(n: int, max_delay: int) -> float:
 
     start_time = time.perf_counter()
