@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """This module collects 10 random nums and returns 10 random nums"""
+
 from async_generator import async_generator
 import asyncio
 from typing import List
