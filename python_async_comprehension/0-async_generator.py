@@ -4,6 +4,7 @@ import random
 import asyncio
 from typing import Generator
 
+
 async def async_generator() -> Generator[float, None, None]:
     """coroutine defined asynchronously"""
     for i in range(10):
