@@ -4,6 +4,7 @@ from async_generator import async_generator
 import asyncio
 from typing import List
 
+
 async def async_comprehension() -> List[float]:
-        results = [item async for item in async_generator()]
-        return(results)
+    results = [item async for item in async_generator()]
+    return (results)
