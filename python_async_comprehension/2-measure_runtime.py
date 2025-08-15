@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+"""This module"""
 
 from async_comprehension import async_comprehension
 import asyncio
@@ -11,5 +11,5 @@ async def measure_runtime() -> float:
     async_comprehension(), async_comprehension())
     """so this lets it run simultaneously 4 times"""
     end_time = time.perf_counter()
-    total_time =  start_time = end_time - start_time
+    total_time = end_time - start_time
     return end_time - start_time
