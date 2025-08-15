@@ -5,7 +5,7 @@ from async_comprehension import async_comprehension
 import asyncio
 import time
 
-async def measure_runtime():
+async def measure_runtime() -> float:
     start_time = time.perf_counter()
     await asyncio.gather(async_comprehension(), async_comprehension(),
     async_comprehension(), async_comprehension())
