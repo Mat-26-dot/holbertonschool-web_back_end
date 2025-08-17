@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""A method named get_page that takes two integer arguments
+page with default value 1 and page_size"""
+
+
 import csv
 import math
 from typing import List
