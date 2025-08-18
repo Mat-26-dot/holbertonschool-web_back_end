@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-
-
-#!/usr/bin/env python3
 """A method named get_page that takes two integer arguments
 page with default value 1 and page_size"""
 
@@ -40,7 +37,7 @@ class Server:
         data = self.dataset()
         """Returned data fro mstart and end of index_range"""
         return data[start:end]
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Return a page of the dataset"""
         data = self.get_page (page, page_size)
@@ -48,11 +45,11 @@ class Server:
         total_pages = math.ceil(total_items / page_size)
 
         return {
-        
+
         "page_size": len(data),
         "page": page,
         "data": data,
-        "next_page": page + 1 if page < total_pages else None,
-        "prev_page": page - 1 if page > 1 else None,
-        "total_pages": total_pages,
-        }
+            "next_page": page + 1 if page < total_pages else None,
+            "prev_page": page - 1 if page > 1 else None,
+            "total_pages": total_pages,
+}
