@@ -1,13 +1,6 @@
 #!/usr/bin/env python3
 // List all dbs
-from pymongo import MongoClient
+db.adminCommand('listDatabases').databases.forEach(function(d) {
+  print(d.name);
+});
 
-# Connect to MongoDB (default host and port)
-client = MongoClient('localhost', 27017)
-
-# List all databases
-databases = client.list_database_names()
-
-print("Databases in MongoDB:")
-for db in databases:
-    print(db)
