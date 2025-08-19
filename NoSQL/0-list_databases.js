@@ -1,3 +1,0 @@
-db.adminCommand('listDatabases').databases.forEach(function(d) {
-  print(d.name);
-});
