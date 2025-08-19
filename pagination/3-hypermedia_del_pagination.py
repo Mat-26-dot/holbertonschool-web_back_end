@@ -43,7 +43,7 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
             
         return {
-                "index": 0,
+                "index": -1,
                 "next_index": 10,
                 "page_size": 10,
                     "data": list
