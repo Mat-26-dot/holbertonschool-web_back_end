@@ -1,6 +1,4 @@
 // List all dbs
-db.adminCommand({ listDatabases: 1, nameOnly: true }).databases.forEach(function(d) {
-  print(d.name);
-});
+show dbs
 
 
