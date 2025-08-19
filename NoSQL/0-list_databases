@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-// my comment
-show dbs;
-
-
-
+// List all databases
 from pymongo import MongoClient
 
 # Connect to MongoDB (default host and port)
