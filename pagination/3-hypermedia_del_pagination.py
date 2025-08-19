@@ -46,5 +46,5 @@ class Server:
                 "index": index,
                 "next_index": 10,
                 "page_size": 10,
-                    "data": list
+                "data": list
             }
