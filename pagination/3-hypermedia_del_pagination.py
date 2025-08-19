@@ -41,7 +41,8 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        """method with two integer arguments: index with a None default value"""
+        """method with two integer arguments: index
+                        with a None default value"""
         return {
                 "index": index,
                 "next_index": 10,
