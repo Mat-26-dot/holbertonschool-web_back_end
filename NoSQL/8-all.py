@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 // Scrpit that inserts a Doc in the school Collection
 import pymongo
 
