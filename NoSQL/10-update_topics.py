@@ -5,11 +5,10 @@ school document based on the name"""
 
 def update_topics(mongo_collection, name, topics):
     """Function matching school name to set their topics field."""
-
+    """Modifies multiple documents in a collection"""
+    """Returns the pymongo collection object"""
     result = mongo_collection.update_many(
-      """Modifies multiple documents in a collection"""
         {"name": name},
         {"$set": {"topics": topics}}
     )
-    """returns pymongo collection object"""
     return result
