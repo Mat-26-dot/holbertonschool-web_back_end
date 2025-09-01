@@ -1,5 +1,4 @@
 // 1-stdin.js
-const { rawListeners } = require('process');
 const readline = require('readline');
 
 function displayMessage(message) {
@@ -7,27 +6,29 @@ function displayMessage(message) {
 }
 
 // Create readline interface
-const r1 = readline.createInterface({
+const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
+  terminal: false
 });
 
 // Display welcome message
 displayMessage('Welcome to Holberton School, what is your name?');
 
-// Handle user input for name
-rl.question('', (name) => {
-  displayMessage(`Your name is: ${name}`);
+// Listen for line input
+rl.on('line', (input) => {
+  displayMessage(`Your name is: ${input}`);
   rl.close();
 });
 
-// Handle process termination - when user ends the program
+// Handle close event
 rl.on('close', () => {
-  displayMessage('This important software is now closing') 
+  displayMessage('This important software is now closing');
+  process.exit(0);
 });
 
-// Handle SIGNIT (Ctrl+C) gracefully
-process.on('SIGNIT', () => {
+// Handle SIGINT (Ctrl+C) gracefully
+process.on('SIGINT', () => {
   displayMessage('\nThis important software is now closing');
   process.exit(0);
-})
+});
