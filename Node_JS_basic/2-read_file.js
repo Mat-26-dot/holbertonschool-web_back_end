@@ -26,7 +26,7 @@ function countStudents(path) {
         firstname: firstname ? firstname.trim() : '',
         lastname: lastname ? lastname.trim() : '',
         age: age ? age.trim() : '',
-        field: field ? field.trim() : ''
+        field: field ? field.trim() : '',
       };
     });
 
