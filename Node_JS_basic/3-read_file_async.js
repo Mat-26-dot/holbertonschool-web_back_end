@@ -4,54 +4,45 @@ function countStudents(path) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
-        reject(new Error('Cannot load the database'));
+        reject(Error('Cannot load the database'));
         return;
       }
+      const response = [];
+      let msg;
 
-      try {
-        // Split the data into lines and filter out empty lines
-        const lines = data.split('\n').filter((line) => line.trim() !== '');
+      const content = data.toString().split('\n');
 
-        // Remove the header line (first line)
-        const studentLines = lines.slice(1);
+      let students = content.filter((item) => item);
 
-        // Filter out any remaining empty lines
-        const validStudents = studentLines.filter((line) => line.trim() !== '');
+      students = students.map((item) => item.split(','));
 
-        // Parse student data
-        const students = validStudents.map((line) => {
-          const [firstname, lastname, age, field] = line.split(',');
-          return {
-            firstname: firstname.trim(),
-            lastname: lastname.trim(),
-            age: age.trim(),
-            field: field.trim(),
-          };
-        });
+      const NUMBER_OF_STUDENTS = students.length ? students.length - 1 : 0;
+      msg = `Number of students: ${NUMBER_OF_STUDENTS}`;
+      console.log(msg);
 
-        // Log total number of students
-        console.log(`Number of students: ${students.length}`);
+      response.push(msg);
 
-        // Group students by field
-        const fieldGroups = {};
-        students.forEach((student) => {
-        if (!fieldGroups[student.field]) {
-            fieldGroups[student.field] = [];
-          }
-          fieldGroups[student.field].push(student.firstname);
-        });
+      const fields = {};
+      for (const i in students) {
+        if (i !== 0) {
+          if (!fields[students[i][3]]) fields[students[i][3]] = [];
 
-        // Log students by field
-        Object.keys(fieldGroups).forEach((field) => {
-          const studentList = fieldGroups[field];
-          const message = `Number of students in ${field}: ${studentList.length}. List: ${studentList.join(', ')}`;
-          console.log(message);
-        });
-
-        resolve();
-      } catch (parseError) {
-        reject(new Error('Cannot load the database'));
+          fields[students[i][3]].push(students[i][0]);
+        }
       }
+
+      delete fields.field;
+
+      for (const key of Object.keys(fields)) {
+        msg = `Number of students in ${key}: ${
+          fields[key].length
+        }. List: ${fields[key].join(', ')}`;
+
+        console.log(msg);
+
+        response.push(msg);
+      }
+      resolve(response);
     });
   });
 }
