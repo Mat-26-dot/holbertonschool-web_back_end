@@ -5,6 +5,7 @@ process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
 // Set stdin to readable mode
 process.stdin.setEncoding('utf8');
+process.stdin.resume();
 
 // Handle data input
 process.stdin.on('data', (data) => {
@@ -12,14 +13,11 @@ process.stdin.on('data', (data) => {
   const name = data.toString().trim();
   
   // Display the user's name
-  process.stdout.write(`Your name is: ${name}\r`);
-  
-  // Exit the program
-  process.exit();
+  process.stdout.write(`Your name is: ${name}\n`);
 });
 
-// Handle program termination (when user presses Ctrl+C or process ends)
-process.on('exit', () => {
+// Handle end of input
+process.stdin.on('end', () => {
   process.stdout.write('This important software is now closing\n');
 });
 
