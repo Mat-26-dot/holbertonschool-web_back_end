@@ -23,10 +23,10 @@ function countStudents(path) {
     const students = validStudents.map(line => {
       const [firstname, lastname, age, field] = line.split(',');
       return {
-        firstname: firstname?.trim(),
-        lastname: lastname?.trim(),
-        age: age?.trim(),
-        field: field?.trim()
+        firstname: firstname ? firstname.trim() : '',
+        lastname: lastname ? lastname.trim() : '',
+        age: age ? age.trim() : '',
+        field: field ? field.trim() : ''
       };
     });
     
