@@ -12,7 +12,7 @@ process.stdin.on('data', (data) => {
   const name = data.toString().trim();
   
   // Display the user's name
-  process.stdout.write(`Your name is: ${name}\n`);
+  process.stdout.write(`Your name is: ${name}\r`);
   
   // Exit the program
   process.exit();
