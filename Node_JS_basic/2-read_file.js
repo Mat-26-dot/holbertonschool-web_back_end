@@ -1,67 +1,67 @@
 const fs = require('fs');
 
 function countStudents(path) {
-    try {
-        // Read file synchronously with UTF-8 encoding
-        const data = fs.readFileSync(path, 'utf8');
+  try {
+    // Read file synchronously with UTF-8 encoding
+    const data = fs.readFileSync(path, 'utf8');
 
-        // Split into lines and filter out empty lines (not valid students)
-        const validLines = data.split('\n').filter(line => line.trim().length > 0);
+    // Split into lines and filter out empty lines (not valid students)
+    const validLines = data.split('\n').filter(line => line.trim().length > 0);
 
-        // If no valid lines or only header line exists
-        if (validLines.length <= 1) {
-            console.log('Number of students: 0');
-            return;
+    // If no valid lines or only header line exists
+   if (validLines.length <= 1) {
+      console.log('Number of students: 0');
+      return;
+    }
+
+    // Extract header (first line) and data lines (remaining lines)
+    const headerLine = validLines[0];
+    const dataLines = validLines.slice(1);
+
+    // Parse header to get column names
+    const headers = headerLine.split(',').map(header => header.trim());
+
+    // Parse student data
+    const students = [];
+
+    for (const line of dataLines) {
+      const fields = line.split(',').map(field => field.trim());
+
+    // Only process lines that have the correct number of fields
+    // and have a non-empty first field (firstname)
+      if (fields.length === headers.length && fields[0] && fields[0] !== '') {
+        const student = {};
+
+        // Map each field to its corresponding header
+        for (let i = 0; i < headers.length; i++) {
+          student[headers[i]] = fields[i];
         }
 
-        // Extract header (first line) and data lines (remaining lines)
-        const headerLine = validLines[0];
-        const dataLines = validLines.slice(1);
+        students.push(student);
+      }
+    }
 
-        // Parse header to get column names
-        const headers = headerLine.split(',').map(header => header.trim());
+// Log the total number of students
+    console.log(`Number of students: ${students.length}`);
 
-        // Parse student data
-        const students = [];
+    // If no valid students found, return early
+    if (students.length === 0) {
+      return;
+    }
 
-        for (const line of dataLines) {
-            const fields = line.split(',').map(field => field.trim());
+    // Group students by field and collect first names
+    const fieldGroups = {};
 
-            // Only process lines that have the correct number of fields
-            // and have a non-empty first field (firstname)
-            if (fields.length === headers.length && fields[0] && fields[0] !== '') {
-                const student = {};
+    students.forEach(student => {
+      // Get the field of study and firstname
+    const field = student.field;
+    const firstname = student.firstname;
 
-                // Map each field to its corresponding header
-                for (let i = 0; i < headers.length; i++) {
-                    student[headers[i]] = fields[i];
-                }
-
-                students.push(student);
-            }
-        }
-
-        // Log the total number of students
-        console.log(`Number of students: ${students.length}`);
-
-        // If no valid students found, return early
-        if (students.length === 0) {
-            return;
-        }
-
-        // Group students by field and collect first names
-        const fieldGroups = {};
-
-        students.forEach(student => {
-            // Get the field of study and firstname
-            const field = student.field;
-            const firstname = student.firstname;
-
-            if (field && firstname) {
-                if (!fieldGroups[field]) {
-                    fieldGroups[field] = [];
-                }
-                fieldGroups[field].push(firstname);
+      if (field && firstname) {
+        if (!fieldGroups[field]) {
+            fieldGroups[field] = [];
+    }
+        fieldGroups[field].push(firstname);
             }
         });
 
