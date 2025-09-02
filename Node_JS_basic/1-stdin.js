@@ -1,25 +1,30 @@
-// 1-stdin.js
-function displayMessage(message) {
-  process.stdout.write(message + '\n');
-}
+#!/usr/bin/env node
 
 // Display welcome message
-displayMessage('Welcome to Holberton School, what is your name?');
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-// Handle stdin data
+// Set stdin to readable mode
+process.stdin.setEncoding('utf8');
+
+// Handle data input
 process.stdin.on('data', (data) => {
+  // Remove newline character from input
   const name = data.toString().trim();
-  displayMessage(`Your name is: ${name}`);
-  process.exit(0);
+  
+  // Display the user's name
+  process.stdout.write(`Your name is: ${name}\n`);
+  
+  // Exit the program
+  process.exit();
 });
 
-// Handle process termination
-process.on('SIGINT', () => {
-  displayMessage('This important software is now closing');
-  process.exit(0);
-});
-
+// Handle program termination (when user presses Ctrl+C or process ends)
 process.on('exit', () => {
-  displayMessage('This important software is now closing');
+  process.stdout.write('This important software is now closing\n');
 });
 
+// Handle SIGINT (Ctrl+C)
+process.on('SIGINT', () => {
+  process.stdout.write('\nThis important software is now closing\n');
+  process.exit();
+});
